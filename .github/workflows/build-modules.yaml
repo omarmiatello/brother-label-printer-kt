@@ -1,0 +1,50 @@
+name: Build Modules
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gradle:
+    defaults:
+      run:
+        shell: bash -i {0}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Check out current repository
+      - name: Checkout template
+        uses: actions/checkout@v2
+        with:
+          repository: 'omarmiatello/android-template'
+          path: 'project-templates'
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Install sdkman
+        run: curl -s "https://get.sdkman.io" | bash
+
+      - name: Install kotlin
+        run: sdk install kotlin
+
+      - name: Install kscript
+        run: sdk install kscript
+
+      - name: Run script
+        run: kscript newmodule.kt
+
+      # Commit modified files
+      - name: Commit files
+        run: |
+          rm -r project-templates
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Add gradle modules (using Github Action)"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: ${{ github.ref }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
