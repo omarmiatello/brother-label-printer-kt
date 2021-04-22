@@ -48,7 +48,7 @@ fun main(args: Array<String>) {
     // 3. Start workflow https://github.com/omarmiatello/brother-label-printer-kt/actions/workflows/build-modules.yaml
     val config = ScriptGradleModuleConfig(
         gradleConfig = GradleConfig(
-            packagePrefix = "com.github.omarmiatello.brotherlabelprinterkt",
+            packagePrefix = "com.github.omarmiatello.brotherlabelprinter",
             templatesDirPath = "project-templates",
             settingsGradleFilename = "settings.gradle.kts",
             dependenciesFilename = "buildSrc/src/main/kotlin/Dependencies.kt",
