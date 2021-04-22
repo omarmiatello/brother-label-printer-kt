@@ -18,4 +18,5 @@ pluginManagement {
 }
 
 rootProject.name = "brother-label-printer-kt"
-
+include(":core")
+include(":sample")

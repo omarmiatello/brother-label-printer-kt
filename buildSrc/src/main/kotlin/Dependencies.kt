@@ -1,3 +1,4 @@
+import org.gradle.api.artifacts.dsl.DependencyHandler
 fun String.isStableVersion(): Boolean {
     val upperCase = toUpperCase(java.util.Locale.ROOT)
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { it in upperCase }
@@ -85,4 +86,5 @@ object LibGroup {
     )
 }
 
+val DependencyHandler.moduleCore get() = project(":core")
 // Project modules
