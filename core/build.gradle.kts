@@ -1,5 +1,5 @@
 version = "1.0.0"
-description = "This is core"
+description = "Kotlin extensions for \"Brother Print SDK for Android\" (supported models MPring, PocketJet, and RJ/TD/QL/PT series)"
 
 plugins {
     id("com.android.library")
@@ -48,6 +48,8 @@ android {
 dependencies {
     implementation(Lib.androidxAppcompat)
     implementation(Lib.androidxCoreKtx)
+
+    implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar", "*.aar"))))
 
     testImplementation(Lib.testJunit)
 

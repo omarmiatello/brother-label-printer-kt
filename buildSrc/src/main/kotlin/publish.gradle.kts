@@ -103,8 +103,8 @@ afterEvaluate {
                     developers {
                         developer {
                             id.set("omarmiatello")
-                            name.set("omarmiatello")
-                            email.set("omarmiatello")
+                            name.set("Omar Miatello")
+                            email.set("omar.miatello@gmail.com")
                         }
                     }
                     scm {

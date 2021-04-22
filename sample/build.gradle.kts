@@ -67,6 +67,8 @@ dependencies {
     LibGroup.composeAll.forEach { implementation(it) }
     LibGroup.composeDebug.forEach { debugImplementation(it) }
 
+    implementation(moduleCore)
+
     // test libs
 
     testImplementation(Lib.testJunit)
