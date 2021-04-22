@@ -12,6 +12,9 @@
 <!-- Include details of your testing environment, tests ran to see how -->
 <!-- your change affects other areas of the code, etc. -->
 
+## 📷 Screenshots (if appropriate)
+<!-- Please provide a screenshot of your change -->
+
 ## 📦 Types of changes
 <!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
 - [ ] Bug fix (non-breaking change which fixes an issue)

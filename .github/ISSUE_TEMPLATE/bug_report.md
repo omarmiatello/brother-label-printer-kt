@@ -19,6 +19,6 @@ about: Create a report to help us improve
 <!-- If applicable, add screenshots to help explain your problem. -->
 
 ## 📱 Tech info
- - Script version: <!-- e.g. 1.0 -->
- - Template version: <!-- e.g. 1.0.0 -->
- - OS: <!-- e.g. Mac OS 10.15.x -->
+ - Device: <!-- e.g. Nexus One -->
+ - OS: <!-- e.g. 7.1.1 -->
+ - Library/App version: <!-- e.g. 1.0.0 -->
