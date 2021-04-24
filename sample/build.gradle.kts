@@ -64,6 +64,8 @@ android {
 dependencies {
     implementation(Lib.androidxAppcompat)
     implementation(Lib.androidxCoreKtx)
+    implementation(Lib.androidxActivity)
+    implementation(Lib.lifecycleRuntime)
     LibGroup.composeAll.forEach { implementation(it) }
     LibGroup.composeDebug.forEach { debugImplementation(it) }
 

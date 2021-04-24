@@ -28,12 +28,12 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-val dokkaJar = tasks.create<Jar>("dokkaJar") {
-    group = "build"
-    description = "Assembles Javadoc jar from Dokka API docs"
-    archiveClassifier.set("javadoc")
-    from(tasks.dokkaJavadoc)
-}
+//val dokkaJar = tasks.create<Jar>("dokkaJar") {
+//    group = "build"
+//    description = "Assembles Javadoc jar from Dokka API docs"
+//    archiveClassifier.set("javadoc")
+//    from(tasks.dokkaJavadoc)
+//}
 
 val sourcesJar = tasks.register<Jar>("sourcesJar") {
     group = "build"
@@ -46,14 +46,20 @@ val sourcesJar = tasks.register<Jar>("sourcesJar") {
     }
 }
 
-tasks.dokkaJavadoc.configure {
-    outputDirectory.set(buildDir.resolve("javadoc"))
-    dokkaSourceSets {
-        configureEach {
-            sourceRoot(file("src"))
-        }
-    }
+val javadocJar = tasks.register<Jar>("javadocJar") {
+    dependsOn(JavaPlugin.JAVADOC_TASK_NAME)
+    classifier = "javadoc"
+    from(tasks["javadoc"])
 }
+
+//tasks.dokkaJavadoc.configure {
+//    outputDirectory.set(buildDir.resolve("javadoc"))
+//    dokkaSourceSets {
+//        configureEach {
+//            sourceRoot(file("src"))
+//        }
+//    }
+//}
 
 afterEvaluate {
     publishing {
@@ -83,7 +89,7 @@ afterEvaluate {
                 } else {
                     from(components["java"])
                 }
-                artifact(dokkaJar)
+                // artifact(dokkaJar)
                 artifact(sourcesJar)
 
                 pom {

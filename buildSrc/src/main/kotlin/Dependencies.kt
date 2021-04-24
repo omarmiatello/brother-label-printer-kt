@@ -22,7 +22,10 @@ object Version {
     // Libs
 
     const val androidxAppcompat = "1.2.0"
+    const val androidxActivity = "1.3.0-alpha06"
     const val androidxCoreKtx = "1.3.2"
+    const val lifecycleRuntime = "2.4.0-alpha01"
+
     const val androidxTestExt = "1.1.2"
     const val androidxTest = "1.3.0"
     const val compose = "1.0.0-beta04"
@@ -31,6 +34,8 @@ object Version {
     const val composeLifecycleViewmodel = "1.0.0-alpha04"
     const val dokka = "1.4.20"
     const val ktlint = "0.40.0"
+
+    const val kotlinxCoroutines = "1.4.3"
 
     // Test libs
 
@@ -47,6 +52,8 @@ object Version {
 object Lib {
     const val androidxAppcompat = "androidx.appcompat:appcompat:${Version.androidxAppcompat}"
     const val androidxCoreKtx = "androidx.core:core-ktx:${Version.androidxCoreKtx}"
+    const val androidxActivity = "androidx.activity:activity-ktx:${Version.androidxActivity}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycleRuntime}"
 
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Version.compose}"
@@ -61,8 +68,8 @@ object Lib {
     const val composeAccompanistCoil =
         "com.google.accompanist:accompanist-coil:${Version.composeAccompanistCoil}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Version.compose}"
-
     const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Version.kotlin}"
+    const val kotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.kotlinxCoroutines}"
 
     // tests
     const val testJunit = "junit:junit:${Version.testJunit}"
@@ -89,4 +96,5 @@ object LibGroup {
 }
 
 // Project modules
+val DependencyHandler.moduleBrotherPrintLibrary get() = project(":BrotherPrintLibrary")
 val DependencyHandler.moduleCore get() = project(":core")

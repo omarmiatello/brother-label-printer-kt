@@ -7,8 +7,6 @@ on:
 
 jobs:
   publish:
-    # remove this check when your secrets are setup and you're ready to publish
-    if: ${{ false }}
     runs-on: [ubuntu-latest]
     env:
       GRADLE_OPTS: -Dorg.gradle.parallel=false

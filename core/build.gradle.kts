@@ -1,5 +1,6 @@
 version = "1.0.0"
-description = "Kotlin extensions for \"Brother Print SDK for Android\" (supported models MPring, PocketJet, and RJ/TD/QL/PT series)"
+description = "Kotlin extensions for \"Brother Print SDK for Android\" " +
+    "(supported models MPring, PocketJet, and RJ/TD/QL/PT series)"
 
 plugins {
     id("com.android.library")
@@ -28,6 +29,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = Version.java
+        freeCompilerArgs += listOf("-Xexplicit-api=strict", "-Xopt-in=kotlin.RequiresOptIn")
     }
     buildTypes {
         getByName("release") {
@@ -46,12 +48,6 @@ android {
 }
 
 dependencies {
-    implementation(Lib.androidxAppcompat)
-    implementation(Lib.androidxCoreKtx)
-
-    implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar", "*.aar"))))
-
-    testImplementation(Lib.testJunit)
-
-    LibGroup.testAndroid.forEach { androidTestImplementation(it) }
+    api(moduleBrotherPrintLibrary)
+    implementation(Lib.kotlinxCoroutines)
 }

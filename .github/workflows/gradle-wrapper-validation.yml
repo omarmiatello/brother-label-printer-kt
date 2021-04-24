@@ -9,8 +9,6 @@ on:
 
 jobs:
   validation:
-    # remove this check when your project is ready
-    if: ${{ false }}
     name: Validation
     runs-on: ubuntu-latest
     steps:
