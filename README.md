@@ -4,7 +4,7 @@
 [![](https://img.shields.io/maven-central/v/com.github.omarmiatello.brother-label-printer-kt/core)](https://search.maven.org/search?q=g:com.github.omarmiatello.brother-label-printer-kt)
 ![Build](https://github.com/omarmiatello/brother-label-printer-kt/workflows/Pre%20Merge%20Checks/badge.svg)
 
-Kotlin extensions for "Brother Print SDK for Android" (supported models MPring, PocketJet, and RJ/TD/QL/PT series) - Tested on Brother QL-820NWB
+Kotlin extensions for "[Brother Print SDK for Android](https://support.brother.com/g/s/es/dev/en/mobilesdk/android/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on)" (supported models MPring, PocketJet, and RJ/TD/QL/PT series) - Tested on Brother QL-820NWB
 
 ## Setup
 
