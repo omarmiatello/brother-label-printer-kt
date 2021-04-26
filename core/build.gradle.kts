@@ -48,6 +48,7 @@ android {
 }
 
 dependencies {
-    api(moduleBrotherPrintLibrary)
+    compileOnly(moduleBrotherPrintLibrary)
+    implementation(Lib.androidxPreferences)
     implementation(Lib.kotlinxCoroutines)
 }

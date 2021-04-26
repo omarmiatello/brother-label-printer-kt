@@ -8,6 +8,10 @@ Kotlin extensions for "Brother Print SDK for Android" (supported models MPring, 
 
 Add this in your `build.gradle.ktx` file:
 ```kotlin
+// **Version: Brother Print SDK for Android™ ver.3.5.1**
+// Could be downloaded here: https://support.brother.com/g/s/es/dev/en/mobilesdk/android/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on
+implementation(project(":BrotherPrintLibrary"))
+
 implementation("com.github.omarmiatello.brother-label-printer-kt:core:1.0.0")
 ```
 
@@ -24,7 +28,10 @@ BrotherManager.init(context)
 
 Step 2) Listen for a printer
 ```kotlin
-// this search for a specific printer of use search as fallback if the printer is not available at start
+// OPTION 1: this search for the first printer available
+val printer: StateFlow<PrinterState> = BrotherManager.setDeviceOrSearch()
+
+// OPTION 2: this search for a specific printer of use search as fallback if the printer is not available at start
 val printer: StateFlow<PrinterState> = BrotherManager.setDeviceOrSearch(
     SearchNetPrinter(
         model = PrinterInfo.Model.QL_820NWB,

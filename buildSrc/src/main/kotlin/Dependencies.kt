@@ -24,6 +24,7 @@ object Version {
     const val androidxAppcompat = "1.2.0"
     const val androidxActivity = "1.3.0-alpha06"
     const val androidxCoreKtx = "1.3.2"
+    const val androidxPreferences = "1.1.0"
     const val lifecycleRuntime = "2.4.0-alpha01"
 
     const val androidxTestExt = "1.1.2"
@@ -53,6 +54,7 @@ object Lib {
     const val androidxAppcompat = "androidx.appcompat:appcompat:${Version.androidxAppcompat}"
     const val androidxCoreKtx = "androidx.core:core-ktx:${Version.androidxCoreKtx}"
     const val androidxActivity = "androidx.activity:activity-ktx:${Version.androidxActivity}"
+    const val androidxPreferences = "androidx.preference:preference:${Version.androidxPreferences}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycleRuntime}"
 
     // Compose

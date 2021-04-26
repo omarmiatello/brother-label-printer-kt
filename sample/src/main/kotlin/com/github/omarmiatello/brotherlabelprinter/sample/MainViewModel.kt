@@ -11,12 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-    val printer: StateFlow<PrinterState> = BrotherManager.setDeviceOrSearch(
-        SearchNetPrinter(
-            model = PrinterInfo.Model.QL_820NWB,
-            ip = "192.168.86.182",
-        )
-    )
+    val printer: StateFlow<PrinterState> = BrotherManager.setDeviceOrSearch()
 
     fun printTemplate(easyPrinter: EasyPrinter) {
         viewModelScope.launch {
