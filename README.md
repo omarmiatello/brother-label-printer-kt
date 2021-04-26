@@ -1,5 +1,7 @@
 # brother-label-printer-kt
 
+[![GitHub license](https://img.shields.io/github/license/omarmiatello/brother-label-printer-kt)](LICENSE)
+[![](https://img.shields.io/maven-central/v/com.github.omarmiatello.brother-label-printer-kt/core)](https://search.maven.org/search?q=g:com.github.omarmiatello.brother-label-printer-kt)
 ![Build](https://github.com/omarmiatello/brother-label-printer-kt/workflows/Pre%20Merge%20Checks/badge.svg)
 
 Kotlin extensions for "Brother Print SDK for Android" (supported models MPring, PocketJet, and RJ/TD/QL/PT series) - Tested on Brother QL-820NWB
@@ -12,14 +14,14 @@ Add this in your `build.gradle.ktx` file:
 // Could be downloaded here: https://support.brother.com/g/s/es/dev/en/mobilesdk/android/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on
 implementation(project(":BrotherPrintLibrary"))
 
-implementation("com.github.omarmiatello.brother-label-printer-kt:core:1.0.0")
+implementation("com.github.omarmiatello.brother-label-printer-kt:core:1.0.1")
 ```
 
 ## How to use
 
 Note:
 - Brother Mobile SDK support only one device at a time.
-- [com.brother.ptouch.sdk.Printer], internally use a lot of static methods (and yes, it's a bad practice)
+- `com.brother.ptouch.sdk.Printer`, internally use a lot of static methods (and yes, it's a bad practice)
 
 Step 1) Initialize onCreate() of your Application/Activity
 ```kotlin

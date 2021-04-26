@@ -118,6 +118,7 @@ public object BrotherManager {
             .apply()
     }
 
+    @Suppress("TooGenericExceptionCaught", "SwallowedException")
     private fun SharedPreferences.getLastSearchNetPrinter(): SearchNetPrinter? {
         val ip = getString("brother_ip", null)
         val model = try {
