@@ -69,7 +69,7 @@ dependencies {
     LibGroup.composeAll.forEach { implementation(it) }
     LibGroup.composeDebug.forEach { debugImplementation(it) }
 
-    compileOnly(moduleBrotherPrintLibrary)
+    implementation(moduleBrotherPrintLibrary)
     implementation(moduleCore)
 
     // test libs

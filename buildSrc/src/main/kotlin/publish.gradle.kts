@@ -46,12 +46,6 @@ val sourcesJar = tasks.register<Jar>("sourcesJar") {
     }
 }
 
-val javadocJar = tasks.register<Jar>("javadocJar") {
-    dependsOn(JavaPlugin.JAVADOC_TASK_NAME)
-    classifier = "javadoc"
-    from(tasks["javadoc"])
-}
-
 //tasks.dokkaJavadoc.configure {
 //    outputDirectory.set(buildDir.resolve("javadoc"))
 //    dokkaSourceSets {

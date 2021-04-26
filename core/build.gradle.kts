@@ -1,4 +1,4 @@
-version = "1.0.1"
+version = "1.0.2"
 description = "Kotlin extensions for \"Brother Print SDK for Android\" " +
     "(supported models MPring, PocketJet, and RJ/TD/QL/PT series)"
 

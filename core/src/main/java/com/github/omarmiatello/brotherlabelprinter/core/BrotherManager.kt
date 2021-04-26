@@ -5,10 +5,11 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.brother.ptouch.sdk.Printer
 import com.brother.ptouch.sdk.PrinterInfo
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onSubscription
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -59,15 +59,15 @@ public object BrotherManager {
         }
     }.flowOn(Dispatchers.IO).stateIn(GlobalScope, SharingStarted.WhileSubscribed(), emptySet())
 
-    public val printer: StateFlow<PrinterState> =
+    public val printer: Flow<PrinterState> =
         combine(current, netSearch) { current, netSearch ->
             when (current) {
                 is EasyPrinter,
                 is SearchNetPrinter -> current
                 NotAvailable -> if (netSearch) Searching else current
-                Searching -> TODO()
+                Searching -> error("Should not happen")
             }
-        }.stateIn(GlobalScope, SharingStarted.WhileSubscribed(), NotAvailable)
+        }
 
     public suspend fun netPrinterTakeFirst(): Set<SearchNetPrinter> = netPrinters.first {
         it.isNotEmpty() && setDevice(it.random()) != NotAvailable
@@ -98,18 +98,19 @@ public object BrotherManager {
                 }
         }
 
-    public fun setDeviceOrSearch(netPrinter: SearchNetPrinter? = null): StateFlow<PrinterState> =
-        printer.onSubscription {
-            coroutineScope {
-                launch {
-                    val printer = netPrinter ?: pref?.getLastSearchNetPrinter()
-                    println(printer)
-                    if (printer == null || setDevice(printer) == NotAvailable) {
-                        netPrinterTakeFirst()
-                    }
-                }
+    public fun setDeviceOrSearch(
+        scope: CoroutineScope,
+        netPrinter: SearchNetPrinter? = null,
+        sharingStarted: SharingStarted = SharingStarted.WhileSubscribed(),
+    ): StateFlow<PrinterState> {
+        scope.launch {
+            val printer = netPrinter ?: pref?.getLastSearchNetPrinter()
+            if (printer == null || setDevice(printer) == NotAvailable) {
+                netPrinterTakeFirst()
             }
-        }.stateIn(GlobalScope, SharingStarted.WhileSubscribed(), NotAvailable)
+        }
+        return printer.stateIn(scope, sharingStarted, NotAvailable)
+    }
 
     private fun SharedPreferences.putLast(searchNetPrinter: SearchNetPrinter) {
         edit()
@@ -126,8 +127,6 @@ public object BrotherManager {
         } catch (e: Exception) {
             null
         }
-        return if (ip != null && model != null) {
-            SearchNetPrinter(model, ip)
-        } else null
+        return if (ip != null && model != null) SearchNetPrinter(model, ip) else null
     }
 }
