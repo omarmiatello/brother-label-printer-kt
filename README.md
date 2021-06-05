@@ -14,7 +14,7 @@ Add this in your `build.gradle.ktx` file:
 // Could be downloaded here: https://support.brother.com/g/s/es/dev/en/mobilesdk/android/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on
 implementation(project(":BrotherPrintLibrary"))
 
-implementation("com.github.omarmiatello.brother-label-printer-kt:core:1.0.2")
+implementation("com.github.omarmiatello.brother-label-printer-kt:core:1.0.3")
 ```
 
 ## How to use

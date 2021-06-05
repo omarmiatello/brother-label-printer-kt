@@ -17,7 +17,7 @@ object Sdk {
 
 object Version {
     const val java = "11"
-    const val kotlin = "1.4.32"
+    const val kotlin = "1.5.10"
 
     // Libs
 
@@ -33,10 +33,10 @@ object Version {
     const val composeAccompanistCoil = "0.7.0"
     const val composeActivity = "1.3.0-alpha06"
     const val composeLifecycleViewmodel = "1.0.0-alpha04"
-    const val dokka = "1.4.20"
+    const val dokka = "1.4.32"
     const val ktlint = "0.40.0"
 
-    const val kotlinxCoroutines = "1.4.3"
+    const val kotlinxCoroutines = "1.5.0"
 
     // Test libs
 

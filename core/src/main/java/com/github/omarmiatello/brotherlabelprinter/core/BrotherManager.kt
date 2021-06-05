@@ -20,14 +20,11 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.time.ExperimentalTime
-import kotlin.time.milliseconds
 
 /**
  * Brother Mobile SDK support only one device at a time.
  * [com.brother.ptouch.sdk.Printer], internally use a lot of static methods (and yes, it's a bad practice)
  */
-@OptIn(ExperimentalTime::class)
 public object BrotherManager {
     private var pref: SharedPreferences? = null
     private var workPath: String = ""
@@ -55,7 +52,7 @@ public object BrotherManager {
             emit(set)
 
             netSearch.value = false
-            delay((if (set.size > 0) 5000 else 100).milliseconds)
+            delay(if (set.size > 0) 5000 else 100)
         }
     }.flowOn(Dispatchers.IO).stateIn(GlobalScope, SharingStarted.WhileSubscribed(), emptySet())
 

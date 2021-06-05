@@ -1,4 +1,4 @@
-version = "1.0.2"
+version = "1.0.3"
 description = "Kotlin extensions for \"Brother Print SDK for Android\" " +
     "(supported models MPring, PocketJet, and RJ/TD/QL/PT series)"
 
@@ -10,14 +10,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Sdk.compile)
+    compileSdk = Sdk.compile
 
     defaultConfig {
-        minSdkVersion(Sdk.min)
-        targetSdkVersion(Sdk.target)
-
-        versionCode = 1
-        versionName = version.toString()
+        minSdk = Sdk.min
+        targetSdk = Sdk.target
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
